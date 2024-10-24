@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "nome": "Jéferson",
+      "email": "joao.canezin22@gmail.com",
+      "password": "senha",
+      "tipo": "adm"
+    },
+  
+    {
+      "id": 1,
+      "nome": "Brenda Só Fé",
+      "email": "brendaDoGrau@gmail.com",
+      "password": "eunãoseioquecolocar123",
+      "tipo": "adm"
+    }
+  ]
+  

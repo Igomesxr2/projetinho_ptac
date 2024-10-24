@@ -1,23 +1,56 @@
 "use client"; 
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Usuario from '../interfaces/usuario';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [erro, setErro] = useState('');
     const router = useRouter();
+    const [usuarios, setUsuario] = useState<Usuario[]>( [
+        {
+          "id": 1,
+          "nome": "Jéferson",
+          "email": "joao.canezin22@gmail.com",
+          "senha": "senha",
+          "tipo": "adm"
+        },
+      
+        {
+          "id": 1,
+          "nome": "Brenda Só Fé",
+          "email": "brendaDoGrau@gmail.com",
+          "senha": "eunãoseioquecolocar123",
+          "tipo": "adm"
+        }
+      ])
+      
     
     const login = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); 
-
-        if (email === "gustavo.silva19@estudante.ifms.edu.br" && senha === "123456") {
-            router.push('/');   
-        } else {
-            setErro('Login falhou. Por favor, use a senha 123456');
+        const usuario = usuarios.find( (user) => (user.email = email && user.senha === senha) )
+        if (usuario) {
+            localStorage.setItem('usuario',JSON.stringify(usuario))
+            router.push('/')
+        }else{
+            setErro('Email ou Senha Invalidos')
         }
     }
+
+    useEffect(() => {
+        const usuarioLogado = localStorage.getItem('usuario');
+        if (usuarioLogado) {
+            router.push('/')
+        }
+    },[router])
+
+
+
+
+
+
 
     return (
         <div style={styles.container}>  
