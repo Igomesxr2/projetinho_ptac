@@ -1,10 +1,14 @@
-"use client"; 
+"use client"
 
 import styles from '../styles/login.module.css'
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Usuario from '../interfaces/usuario';
 import Header from '../components/Header';
+import { ApiURL } from '../config';
+import { setCookie } from 'nookies';
+import { parseCookies } from 'nookies';
+
 
 
 export default function Login() {
@@ -12,52 +16,75 @@ export default function Login() {
     const [senha, setSenha] = useState('');
     const [erro, setErro] = useState('');
     const router = useRouter();
-    const [usuarios, setUsuario] = useState<Usuario[]>( [
+    const [usuarios, setUsuario] = useState<Usuario[]>([
         {
-          "id": 1,
-          "nome": "Jéferson",
-          "email": "joao.canezin22@gmail.com",
-          "senha": "senha",
-          "tipo": "adm"
+            "id": 1,
+            "nome": "Jéferson",
+            "email": "joao.canezin22@gmail.com",
+            "senha": "senha",
+            "tipo": "adm"
         },
-      
+
         {
-          "id": 1,
-          "nome": "Brenda Só Fé",
-          "email": "brendaDoGrau@gmail.com",
-          "senha": "eunãoseioquecolocar123",
-          "tipo": "adm"
+            "id": 1,
+            "nome": "Brenda Só Fé",
+            "email": "brendaDoGrau@gmail.com",
+            "senha": "eunãoseioquecolocar123",
+            "tipo": "adm"
         }
-      ])
-      
-    
-    const login = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault(); 
-        const usuario = usuarios.find( (user) => (user.email === email && user.senha === senha) )
-        if (usuario) {
-            localStorage.setItem('usuario',JSON.stringify(usuario))
-            router.push('/')
-        }else{
-            setErro('Email ou Senha Invalidos')
+    ])
+
+
+
+    interface ResponseSignin {
+        erro: boolean,
+        mensagem: string,
+        token?: string
+    }
+
+
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`${ApiURL}/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, senha })
+            })
+            if (response) {
+                const data: ResponseSignin = await response.json()
+                const { erro, mensagem, token = '' } = data;
+                console.log(data)
+                if (erro) {
+                    setErro(mensagem)
+                } else {
+                    // npm i nookies setCookie
+                    setCookie(undefined, 'restaurant-token', token, {
+                        maxAge: 60 * 60 * 1 // 1 hora
+                    })
+
+                }
+            } else {
+
+            }
+        }
+        catch (error) {
+            console.error('Erro na requisicao', error)
         }
     }
 
-    useEffect(() => {
-        const usuarioLogado = localStorage.getItem('usuario');
-        if (usuarioLogado) {
-            router.push('/')
-        }
-    },[router])
-
     return (
-        <div className={styles.content}> 
-            <Header/>
+        <div className={styles.content}>
+            <Header />
             <div className={styles.container}>
-                <form className={styles.form} onSubmit={login}>
+                <form onSubmit={handleSubmit}>
                     <h2 >Login</h2>
                     <div>
                         <label htmlFor="email">E-mail:</label>
-                        <input  
+                        <input
                             type="email"
                             id="email"
                             value={email}
@@ -80,7 +107,7 @@ export default function Login() {
                     {erro && <p>{erro}</p>}
                 </form>
             </div>
-            </div>
+        </div>
     );
 
 };

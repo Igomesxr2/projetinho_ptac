@@ -1,7 +1,11 @@
-"use client"; 
+"use client"
+
+import styles from '../styles/cadastro.module.css'
 import Usuario from '../interfaces/usuario';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Header from '../components/Header';
+
 
 export default function Cadastro() {
     const [usuario,setUsuario] = useState<Usuario>({nome:"",email:"",senha:"",tipo:"cliente"});
@@ -41,42 +45,46 @@ export default function Cadastro() {
     
 
     return (
-        <div>  
-            <form onSubmit={cadastro}>
-                <h2 >Cadastro</h2>
-                <div>
-                    <label htmlFor="name">Nome:</label>
-                    <input  
-                        type="name"
-                        id="name"
-                        value={usuario.nome}
-                        onChange={(e) => alterarNome(e.target.value)}
-                        required
-                    />
+        <div className={styles.content}>  
+            <Header/>
+            <div className={styles.container}>
+                <form onSubmit={cadastro}>
+                    <h2 >Cadastro</h2>
+                        <label htmlFor="name">Nome:</label>
+                    <div>
+                        <input  
+                            type="name"
+                            id="name"
+                            value={usuario.nome}
+                            onChange={(e) => alterarNome(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="email">E-mail:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            value={usuario.email}
+                            onChange={(e) => alterarEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Senha:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={usuario.senha}
+                            onChange={(e) => alterarSenha(e.target.value)}
+                            required
+                        />
+                    </div> 
+                    <button type="submit">Cadastro</button>
+                    {erro && <p>{erro}</p>}
+                </form>
                 </div>
-                <div>
-                    <label htmlFor="email">E-mail:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={usuario.email}
-                        onChange={(e) => alterarEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password">Senha:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={usuario.senha}
-                        onChange={(e) => alterarSenha(e.target.value)}
-                        required
-                    />
-                </div> 
-                <button type="submit">Cadastro</button>
-                {erro && <p>{erro}</p>}
-            </form>
+
         </div>
     );
 };
