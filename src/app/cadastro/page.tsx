@@ -41,10 +41,10 @@ export default function Cadastro() {
     
 
     return (
-        <div style={styles.container}>  
-            <form onSubmit={cadastro} style={styles.form}>
+        <div>  
+            <form onSubmit={cadastro}>
                 <h2 >Cadastro</h2>
-                <div style={styles.inputGroup}>
+                <div>
                     <label htmlFor="name">Nome:</label>
                     <input  
                         type="name"
@@ -54,7 +54,7 @@ export default function Cadastro() {
                         required
                     />
                 </div>
-                <div style={styles.inputGroup}>
+                <div>
                     <label htmlFor="email">E-mail:</label>
                     <input
                         type="email"
@@ -64,7 +64,7 @@ export default function Cadastro() {
                         required
                     />
                 </div>
-                <div style={styles.inputGroup}>
+                <div>
                     <label htmlFor="password">Senha:</label>
                     <input
                         type="password"
@@ -74,39 +74,9 @@ export default function Cadastro() {
                         required
                     />
                 </div> 
-                <button type="submit" style={styles.button}>Cadastro</button>
-                {erro && <p style={styles.error}>{erro}</p>}
+                <button type="submit">Cadastro</button>
+                {erro && <p>{erro}</p>}
             </form>
         </div>
     );
-}
-const styles = {
-    container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-    },
-    form: {
-        padding: '2rem',
-        borderRadius: '5px',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        backgroundColor: '#fff',
-    },
-
-    inputGroup: {
-        marginBottom: '1rem',
-    },
-    button: {
-        padding: '0.5rem 1rem',
-        backgroundColor: '#0070f3',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-    },
-    error: {
-        color: 'red',
-        marginTop: '1rem',
-    },
 };

@@ -1,0 +1,33 @@
+.content {
+    background-color: rgba(0, 0, 0, 0.816);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+}
+
+.buttons button {
+    background-color: rgba(250, 47, 47, 0.86);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.buttons button:hover {
+    background-color: #ff4d4d;
+}
+
+.buttons a {
+    color: white;
+    text-decoration: none;
+}

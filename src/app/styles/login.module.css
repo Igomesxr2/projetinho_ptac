@@ -1,0 +1,87 @@
+.content {
+    background-image: url('/images/fundo2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    
+    /* Adiciona um filtro de sombra na imagem de fundo */
+    background-color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de transparência */
+    background-blend-mode: overlay; /* Mescla a cor com a imagem */
+}
+
+
+.container{
+    display: flex;
+    justify-content: center; 
+    align-items: center;      
+    text-align: center; 
+
+}
+
+.container form{
+    background-color: rgba(0, 0, 0, 0.816);
+    padding: 40px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 50px;
+}
+
+.container h2{
+    color: white;
+    margin-bottom: 20px;
+}
+
+.container label{
+    color: white;
+}
+
+.container input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+}
+
+.container input:focus{
+    outline: none;
+    border: 2px solid #fa2f2f;
+}
+
+.container button{
+    background-color: #fa2f2f;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.container button:hover{
+    background-color: #ff4d4d;
+}
+
+.container a{
+    color: #ff4d4d;
+    display: block;
+    margin-top: 15px;
+}
+
+.container a:hover{
+    text-decoration: underline;
+}
+
+.container p{
+    color: rgb(255, 255, 255);
+    margin-top: 25px;
+}
