@@ -16,25 +16,7 @@ export default function Login() {
     const [senha, setSenha] = useState('');
     const [erro, setErro] = useState('');
     const router = useRouter();
-    const [usuarios, setUsuario] = useState<Usuario[]>([
-        {
-            "id": 1,
-            "nome": "Jéferson",
-            "email": "joao.canezin22@gmail.com",
-            "senha": "senha",
-            "tipo": "adm"
-        },
-
-        {
-            "id": 1,
-            "nome": "Brenda Só Fé",
-            "email": "brendaDoGrau@gmail.com",
-            "senha": "eunãoseioquecolocar123",
-            "tipo": "adm"
-        }
-    ])
-
-
+    const [usuarios, setUsuario] = useState<Usuario[]>([])
 
     interface ResponseSignin {
         erro: boolean,
@@ -52,7 +34,7 @@ export default function Login() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, senha })
+                body: JSON.stringify({ email, password: senha })
             })
             if (response) {
                 const data: ResponseSignin = await response.json()
@@ -65,6 +47,8 @@ export default function Login() {
                     setCookie(undefined, 'restaurant-token', token, {
                         maxAge: 60 * 60 * 1 // 1 hora
                     })
+
+                    router.push("/")
 
                 }
             } else {

@@ -20,7 +20,6 @@ export default function Home() {
   return (
     <div className={styles.content}>
       <Header />
-      <p>Teste</p>
     </div>
   );
 }
