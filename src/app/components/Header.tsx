@@ -5,9 +5,9 @@ export default function Header() {
         <header className={styles.content}>
             <img src="/images/logo.png" alt="Logo"  className={styles.logo}/>
             <div className={styles.buttons}>
-                <button><a href="/">Home</a></button>
-                <button><a href="/login">Login</a></button>
-                <button><a href="/cadastro">Cadastrar</a></button>
+                <a href="/"><button>Home</button></a>
+                <a href="/login"><button>Login</button></a>
+                <a href="/cadastro"><button>Cadastrar</button></a>
             </div>
         </header>
     );

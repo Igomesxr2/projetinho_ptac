@@ -21,6 +21,13 @@ export default function Cadastro() {
         token?: string
     }
     
+    useEffect(() => {
+        const { 'restaurant-token': token } = parseCookies()
+        if (token) {
+          router.push('/')
+        }
+      }, [])
+
     const cadastroSubmit = async (e: FormEvent) => {
         e.preventDefault();
         try {
