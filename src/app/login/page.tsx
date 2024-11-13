@@ -24,7 +24,12 @@ export default function Login() {
         token?: string
     }
 
-
+    useEffect(() => {
+        const { 'restaurant-token': token } = parseCookies()
+        if (token) {
+          router.push('/')
+        }
+      }, [])
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
