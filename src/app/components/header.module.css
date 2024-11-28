@@ -11,6 +11,13 @@
     height: 200px;
 }
 
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .buttons button {
     background-color: rgba(250, 47, 47, 0.86);
     color: white;
