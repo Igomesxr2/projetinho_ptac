@@ -1,0 +1,93 @@
+.content {
+    background-image: url('/images/fundo2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    
+    /* Adiciona um filtro escuro na imagem de fundo */
+    background-color: rgba(0, 0, 0, 0.6); /* Cor preta com 60% de transparência */
+    background-blend-mode: overlay;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80%;
+}
+
+.container form {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 40px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 50px;
+}
+
+.container h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.container label {
+    color: white;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+}
+
+.container input:focus {
+    outline: none;
+    border: 2px solid #fa2f2f;
+}
+
+.container button {
+    background-color: #fa2f2f;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.container button:hover {
+    background-color: #ff4d4d;
+}
+
+.container .cancel {
+    background-color: #444;
+}
+
+.container .cancel:hover {
+    background-color: #666;
+}
+
+.container p {
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.userInfo {
+    color: white;
+    font-size: 18px;
+}
